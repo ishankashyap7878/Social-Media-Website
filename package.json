@@ -1,5 +1,5 @@
 {
-  "name": "codeail",
+  "name": "codeial",
   "version": "1.0.0",
   "description": "My all social media web app",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0"
   }
 }
