@@ -7,26 +7,22 @@ const User = require('../models/user');
 
 // authentication using passport
 passport.use(new LocalStrategy({
-    //username field is a syntax for storing any unique key if the user schema
-    //it is used to identify a unique user    
-    usernameField: 'email'
+        usernameField: 'email',
+        passReqToCallback: true
     },
-    function(email, password, done){
-        //find a user and establish the identity
-        //first email is the property and second one is the value
+    function(req, email, password, done){
         // find a user and establish the identity
         User.findOne({email: email}, function(err, user)  {
             if (err){
-                console.log('Error in finding user --> Passport');
+                req.flash('error', err);
                 return done(err);
             }
 
             if (!user || user.password != password){
-                console.log('Invalid Username/Password');
-                //null->no error, false->authentication hasn't been done
+                req.flash('error', 'Invalid Username/Password');
                 return done(null, false);
             }
-            //null->no error, user-> user is found so we just pass the user to the serializer
+
             return done(null, user);
         });
     }
@@ -34,10 +30,9 @@ passport.use(new LocalStrategy({
 
 ));
 
-//we pass the user too this serializer
+
 // serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user, done){
-    //user.id is stored in an encrypted format as the cookie
     done(null, user.id);
 });
 
@@ -63,7 +58,7 @@ passport.checkAuthentication = function(req, res, next){
         return next();
     }
 
-    //  if the user is not signed in
+    // if the user is not signed in
     return res.redirect('/users/sign-in');
 }
 
@@ -75,5 +70,7 @@ passport.setAuthenticatedUser = function(req, res, next){
 
     next();
 }
+
+
 
 module.exports = passport;
