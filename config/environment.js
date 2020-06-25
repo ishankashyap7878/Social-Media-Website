@@ -25,13 +25,13 @@ const development = {
         port: 587,
         secure: false,
         auth: {
-            user: 'alchemy.cn18',
-            pass: 'codingninjas'
+            user: 'ishank243@gmail.com',
+            pass: 'hatemylife_123'
         }
     },
     google_client_id: "109733253139-itc65kr0ooovvm3fseodgvo3m6u7d67i.apps.googleusercontent.com",
-    google_client_secret: "69_u3bsnycEszpoWVUq8mTuV-1HKMd2",
-    google_call_back_url: "http://localhost:8000/users/auth/google/callback",
+    google_client_secret: "69_u3bsnycEszpoWUUq8mTuV",
+    google_call_back_url: "http://localhost:8001/users/auth/google/callback",
     jwt_secret: 'codeial',
     morgan: {
         mode: 'dev',
