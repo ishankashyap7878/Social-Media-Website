@@ -46,7 +46,7 @@ app.use(sassMiddleware({
 app.use(logger(env.morgan.mode, env.morgan.options));
 
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 
 app.use(cookieParser());
 
