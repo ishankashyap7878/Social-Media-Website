@@ -80,7 +80,6 @@ app.use(session({
         {
             mongooseConnection: db,
             autoRemove: 'disabled'
-        
         },
         function(err){
             console.log(err ||  'connect-mongodb setup ok');
