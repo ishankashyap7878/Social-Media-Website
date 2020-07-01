@@ -84,7 +84,7 @@ app.use(session({
 
 
 
-    
+
     store: new MongoStore(
         {
             mongooseConnection: db,
@@ -93,7 +93,7 @@ app.use(session({
         function(err){
             console.log(err ||  'connect-mongodb setup ok');
         }
-    )
+    ) 
 }));
 
 app.use(passport.initialize());
